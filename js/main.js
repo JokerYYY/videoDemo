@@ -27,7 +27,10 @@ function handleSuccess(stream) {
   initRecorder(stream);
 }
 function initRecorder(localStream){
-  let mediaRecorder=new MediaRecorder(localStream);
+  let options = {
+    mimeType : 'video/webm;codecs=vp8,opus',
+  }
+  let mediaRecorder=new MediaRecorder(localStream,options);
   mediaRecorder.ondataavailable=function(blob){
     console.log(blob.data)
   }
